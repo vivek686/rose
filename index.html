@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffd1dc, #ffe6f0, #ffc2d1);
+    overflow: hidden;
+    color: #5a2a35;
+}
+
+/* Glass Card */
+.card {
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.35);
+    border-radius: 25px;
+    padding: 40px;
+    width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* Button */
+button {
+    margin-top: 25px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    background: linear-gradient(45deg, #ff8fab, #ff4d6d);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.07);
+}
+
+/* Falling Roses */
+.rose-fall {
+    position: fixed;
+    top: -40px;
+    font-size: 24px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="title">Happy Rose Day 🌹</div>
+
+    <div class="message">
+        This rose is for the most beautiful girl I have 😊<br>
+        May your life always bloom with happiness ❤️
+    </div>
+
+    <button onclick="sendRose()">Send Rose</button>
+</div>
+
+<script>
+function sendRose() {
+    for (let i = 0; i < 40; i++) {
+        let rose = document.createElement("div");
+        rose.className = "rose-fall";
+        rose.innerHTML = "🌹";
+        rose.style.left = Math.random() * 100 + "vw";
+        rose.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(rose);
+
+        setTimeout(() => rose.remove(), 6000);
+    }
+}
+</script>
+
+</body>
+</html>
